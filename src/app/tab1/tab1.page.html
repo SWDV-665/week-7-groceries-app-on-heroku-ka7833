@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+    <h3 class="no-item ion-text-center" *ngIf="items.length === 0">
+      No items available on the list!
+    </h3>
+  <ion-list>
+    <ion-item-sliding  *ngFor="let item of items; let i = index" >
+      <ion-item-options side="end">
+        <ion-button (click)="editItem(item, i, item._id)" size="default" color="primary">
+          <ion-icon name="create-outline"></ion-icon>
+          Edit
+        </ion-button>
+
+        <ion-button (click)="shareItem(item, i)" size="default" color="light">
+            <ion-icon name="share-outline"></ion-icon>
+            Share
+          </ion-button>
+
+          <ion-button (click)="removeItem(item._id)" size="default" color="danger">
+            <ion-icon name="trash-outline"></ion-icon>
+            Remove
+          </ion-button>
+      </ion-item-options>
+
+      <ion-item>
+        <ion-label>
+          <h2>{{item.name}}</h2>
+          <p>{{item.quantity}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

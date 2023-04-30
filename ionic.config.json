@@ -1,0 +1,8 @@
+{
+  "name": "groceries",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "42390ee4"
+}
